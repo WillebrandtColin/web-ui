@@ -12,8 +12,6 @@ services:
       - "6080:6080"
       - "5901:5901"
       - "9222:9222"
-    volumes:
-      - ~/docker-files-web:/downloads
 
     environment:
       # LLM API Keys & Endpoints
@@ -69,6 +67,7 @@ services:
 
     volumes:
       - /tmp/.X11-unix:/tmp/.X11-unix
+      - ~/docker-files-web:/downloads
       # - ./my_chrome_data:/app/data/chrome_data # Optional: persist browser data
     restart: unless-stopped
     shm_size: "2gb"
