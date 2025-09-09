@@ -106,8 +106,20 @@ async def run_single_browser_task(
             )
         )
 
+        download_dir = browser_config.get("save_download_path", "./tmp/downloads")
+        try:
+            os.makedirs(download_dir, exist_ok=True)
+            if not os.path.isdir(download_dir):
+                raise OSError(f"Directory {download_dir} does not exist after creation attempt")
+        except Exception as e:
+            logger.error(
+                f"Failed to create downloads directory '{download_dir}': {e}",
+                exc_info=True,
+            )
+            raise
+
         context_config = BrowserContextConfig(
-            save_downloads_path="./tmp/downloads",
+            save_downloads_path=download_dir,
             window_height=window_h,
             window_width=window_w,
             force_new_context=True,
