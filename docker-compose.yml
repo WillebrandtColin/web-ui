@@ -12,6 +12,9 @@ services:
       - "6080:6080"
       - "5901:5901"
       - "9222:9222"
+    volumes:
+      - ~/docker-files-web:/downloads
+
     environment:
       # LLM API Keys & Endpoints
       - OPENAI_ENDPOINT=${OPENAI_ENDPOINT:-https://api.openai.com/v1}
