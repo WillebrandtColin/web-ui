@@ -127,7 +127,7 @@ def create_browser_settings_tab(webui_manager: WebuiManager):
             )
             save_download_path = gr.Textbox(
                 label="Save Directory for browser downloads",
-                value="./tmp/downloads",
+                value="/downloads",
                 info="Specify the directory where downloaded files should be saved.",
                 interactive=True,
             )
